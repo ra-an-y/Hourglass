@@ -10,7 +10,7 @@ It is not the component responsible for generating high-level decisions.
 
 ## 2. Authority Boundary
 
-The architecture separates decision formation from execution authorization.
+The proposed architecture separates decision formation from execution authorization.
 
     SNN Mesh
         |
@@ -21,11 +21,13 @@ The architecture separates decision formation from execution authorization.
         v
     Hourglass
         |
-        | Authorized Action
+        | Authorization Result
         v
     Physical Execution
 
-Only Hourglass owns the authorization step.
+Only Hourglass owns the authorization step within this architecture.
+
+An authorization result may be ALLOW, BLOCK, DELAY, or LIMIT. Physical execution therefore occurs only when the resulting policy permits execution.
 
 ## 3. Computation Paths
 
@@ -73,7 +75,6 @@ Potential inputs:
 - Available power
 - Battery state
 - Peak power budget
-- Thermal budget
 
 ### Thermal Fountain
 

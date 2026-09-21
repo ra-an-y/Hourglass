@@ -4,9 +4,9 @@
 
 Hourglass is the execution-authorization core of the Sandman architecture.
 
-It sits between internal decision-making and physical execution, providing a final control boundary that determines whether a proposed action may be executed.
+It defines a final architectural boundary between decision-making and physical execution, determining whether a proposed action may be executed.
 
-Hourglass does not generate high-level decisions by itself. It evaluates execution requests against instantaneous constraints and accumulated homeostatic state.
+Hourglass does not generate high-level decisions by itself. It is intended to evaluate execution requests against instantaneous constraints and accumulated homeostatic state.
 
 ## Role in Sandman
 
@@ -18,7 +18,7 @@ Sandman is organized around five core modules:
 - Power Management
 - Thermal Fountain
 
-Within this architecture:
+Within the proposed architecture:
 
 > Only Hourglass may authorize physical execution.
 
@@ -96,7 +96,7 @@ This allows historical conditions to influence future authorization rather than 
 
 ## Homeostatic Memory
 
-Hourglass incorporates a distributed primitive homeostatic memory.
+Hourglass incorporates a primitive homeostatic memory.
 
 The current design considers several classes of state:
 
@@ -144,9 +144,11 @@ A proposed action is not equivalent to an authorized action.
            v
        Hourglass
            |
-           | authorized action
+           | authorization result
            v
     Physical Execution
+
+Only an action receiving an appropriate authorization result may proceed to physical execution.
 
 ## Relationship with Other Core Modules
 
@@ -169,7 +171,6 @@ Provides resource-related constraints, potentially including:
 - Power availability
 - Battery state
 - Peak power budget
-- Thermal budget
 
 Power Management does not replace Hourglass as the execution authorization layer.
 
@@ -199,7 +200,7 @@ Immediate constraints and accumulated homeostatic state are considered through s
 
 ### 4. Homeostasis is conservative
 
-Accumulated adverse conditions may tighten restrictions. They are not intended to provide an autonomous mechanism for relaxing restrictions.
+Accumulated adverse conditions may tighten restrictions. Recovery may be possible under explicitly defined conditions, but accumulated state does not autonomously clear or relax restrictions.
 
 ### 5. Module responsibilities remain separated
 

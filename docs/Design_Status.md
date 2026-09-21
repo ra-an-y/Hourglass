@@ -6,7 +6,7 @@ Hourglass is currently at the **architectural / conceptual** stage.
 
 The core responsibility is established:
 
-> Only Hourglass may authorize physical execution.
+> Within the proposed architecture, only Hourglass may authorize physical execution.
 
 The homeostatic model is also established at the conceptual level:
 
